@@ -2,18 +2,20 @@ import React, { useEffect } from 'react'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Container, Row, Col, Button, Form} from 'react-bootstrap'
-import myNavbar from './MyNavbar';
+// import myNavbar from './MyNavbar';
 import {useNavigate, useParams} from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getDoc } from 'firebase/firestore';
 import { useState } from 'react';
 import {doc} from "firebase/firestore";
 import {db} from "./firebase"
+import UserViewManager from './UserViewManager';
 
 export default function UserPage() {
   const {id} = useParams();
+  // console.log("id: ", id);
   const navigate = useNavigate();
-
+  
 
   //get name from id
   
@@ -29,6 +31,9 @@ export default function UserPage() {
   //   }
   // }
 
+  useEffect(() => {
+    getSessionName();
+  }, []);
   const getSessionName = async () => {
     const docRef = doc(db, "users", id);
     const docSnap = await getDoc(docRef);
@@ -36,11 +41,11 @@ export default function UserPage() {
       setName(docSnap.data().name);
     }
   }
-  
+  const user = new UserViewManager();
 
   return(
     <div>
-      {/* <Button onClick={signOut}>Log out</Button> */}
+      <Button onClick={() => {user.signOut(); navigate(`/Home`)}}>Log out</Button>
       <Container> {/* Nav bar with search, acct, cart*/}
         <h1> this is the userpage of {name} </h1>
         {/* <h1>hi</h1> */}
