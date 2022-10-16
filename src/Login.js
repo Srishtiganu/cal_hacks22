@@ -1,7 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import {Container, Row, Col, Button, Form} from 'react-bootstrap';
+import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 
 
@@ -19,22 +19,22 @@ export default function Login() {
   }
 
   return (
-  <div> 
-    <Container>
-      <Row>
-        <Button onClick={showUserLogin}>Users</Button>
-      </Row>
-      <Row>
-        <Button onClick={showSellerLogin}>Sellers</Button>
-      </Row>
-    </Container>
-    <Container>
-      {isShownUser && <UserLogIn /> }
-    </Container>
-    <Container>
-      {isShownSeller && <SellerLogIn /> }
-    </Container>
-  </div>
+    <div>
+      <Container>
+        <Row>
+          <Button onClick={showUserLogin}>Users</Button>
+        </Row>
+        <Row>
+          <Button onClick={showSellerLogin}>Sellers</Button>
+        </Row>
+      </Container>
+      <Container>
+        {isShownUser && <UserLogIn />}
+      </Container>
+      <Container>
+        {isShownSeller && <SellerLogIn />}
+      </Container>
+    </div>
   );
 }
 
@@ -45,14 +45,14 @@ function UserLogIn() {
   return (
     <div>
       <Form>
-        <Form.Group> 
+        <Form.Group>
           {/* authenticate stuff, this is placeholder */}
           <Form.Label>User Email</Form.Label>
-          <Form.Control onChange={(event)=> setEmail(event.target.value)} type="email"></Form.Control>
+          <Form.Control onChange={(event) => setEmail(event.target.value)} type="email"></Form.Control>
         </Form.Group>
         <Form.Group controlId="formPassword">
           <Form.Label>Password</Form.Label>
-           {/* onChange={(event) => setPassword(event.target.value)}  */}
+          {/* onChange={(event) => setPassword(event.target.value)}  */}
           <Form.Control onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Session Password" />
         </Form.Group>
       </Form>
@@ -63,18 +63,18 @@ function UserLogIn() {
 function SellerLogIn() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  
+
   return (
     <div>
       <Form>
-        <Form.Group> 
+        <Form.Group>
           {/* authenticate stuff, this is placeholder */}
           <Form.Label>Seller Email</Form.Label>
-          <Form.Control onChange={(event)=> setEmail(event.target.value)} type="email"></Form.Control>
+          <Form.Control onChange={(event) => setEmail(event.target.value)} type="email"></Form.Control>
         </Form.Group>
         <Form.Group controlId="formPassword">
           <Form.Label>Password</Form.Label>
-           {/* onChange={(event) => setPassword(event.target.value)}  */}
+          {/* onChange={(event) => setPassword(event.target.value)}  */}
           <Form.Control onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Session Password" />
         </Form.Group>
       </Form>
