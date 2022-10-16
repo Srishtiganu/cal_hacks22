@@ -26,7 +26,6 @@ function Home() {
                         color: white;
                         font-family: 'Josefin Sans'
                     }
-
                     .btn-medium {
                         padding: 1rem 1.5rem;
                         font-size: 1rem;
