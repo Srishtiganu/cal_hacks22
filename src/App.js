@@ -8,6 +8,8 @@ import UserPage from './UserPage';
 import SellerPage from './SellerPage';
 import MyNavbar from './myNavbar';
 import SignUp from './SignUp';
+import SellerCreateListing from './SellerCreateListing'
+import BusinessPage from './BusinessPage';
 
 function App() {
   return (
@@ -16,11 +18,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/UserPage/:id" element={<UserPage />} />
-        <Route path="/SellerPage" element={<SellerPage />} />
+        <Route path="/SellerPage/" element={<SellerPage />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} />
         {/* <Route path="/Login" element={<Login />} /> */}
+        <Route path="/SellerPage/create" element={<SellerCreateListing />} />
+        <Route path="/BusinessPage" element={<BusinessPage />} />
 
       </Routes>
     </Router>

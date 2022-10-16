@@ -56,7 +56,7 @@ class UserViewManager extends React.Component {
             });
             console.log("email: ", email, " pass: ", password);
         } catch (err) {
-            alert(err);
+            console.log(err);
         } 
     }
 
@@ -64,7 +64,7 @@ class UserViewManager extends React.Component {
         if ((auth.currentUser != null) == true) { // returns id is user is logged in 
             return auth.currentUser.uid;
         }   else {
-            return "Could not return User UID, User Signed Out";
+            return null;
         }
     }
 }

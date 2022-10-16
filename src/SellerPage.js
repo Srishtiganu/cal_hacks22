@@ -5,12 +5,29 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import CreateNewListing from './SellerCreateListing'
 import {Container, Row, Col, Button, Form} from 'react-bootstrap';
 import { useState } from 'react';
+import { useNavigation, useNavigate } from 'react-router-dom'
 
 function SellerPage() {
   // const sellerName = getParams();
+  const navigate = useNavigate()
+
+  const navigateToCreate = () => {
+    // 👇️ navigate to /contacts
+
+    navigate('create');
+  };
+
   const sellerName = "Srishti";
+
+  // const [isShownCreateListing, setIsShownCreateListing] = useState(false);
+
+  // const showCreateListing = (event) => {
+  //   setIsShownCreateListing(current => !current);
+  // }
+
   return(
     <div>
       <Container>
@@ -26,28 +43,18 @@ function SellerPage() {
           <Col>
             <Button size="sm">Shop Activity</Button>
           </Col>
+          <Col>
+            <Button size="sm" onClick={navigateToCreate}>Create Listing</Button>
+          </Col>
         </Row>
       </Container>
-      
+
       <Container>
-        
+
         {/* create new product pop up? */}
 
       </Container>
     </div>
   );
-}
-function createNewListing() {
-  <Form>
-    <Form.Group>
-      <Form.Label>Product Name</Form.Label>
-      <Form.Control></Form.Control>
-    </Form.Group>
-    {/* upload picture */}
-    <Form.Group>
-      <Form.Label>Product Name</Form.Label>
-      <Form.Control></Form.Control>
-    </Form.Group>
-  </Form>
 }
 export default SellerPage;

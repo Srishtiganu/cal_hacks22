@@ -13,9 +13,9 @@ export default function MyNavbar() {
           {/* put navigate later below in navbar.brand tag*/}
           <Navbar.Brand>
             <img 
-            src="/ssLogo.png"
+            src={require('./ssLogo.png')}
             // width="30"
-            height="30"
+            height="70"
             className="d-inline-blck align-top"
             />
           </Navbar.Brand>

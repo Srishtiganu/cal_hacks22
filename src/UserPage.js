@@ -10,26 +10,15 @@ import { useState } from 'react';
 import {doc} from "firebase/firestore";
 import {db} from "./firebase"
 import UserViewManager from './UserViewManager';
+import BusinessPage from './BusinessPage';
 
 export default function UserPage() {
   const {id} = useParams();
-  // console.log("id: ", id);
+
   const navigate = useNavigate();
   
-
-  //get name from id
-  
-  const auth = getAuth();
   
   const [name, setName] = useState("");
-
-  // const getUserDoc = async () => {
-  //   const docRef = doc(db, "users", id);
-  //   const docSnap = await getDoc(docRef);
-  //   if(docSnap.exists) {
-  //     setName(docSnap.data().name);
-  //   }
-  // }
 
   useEffect(() => {
     getSessionName();
@@ -41,28 +30,79 @@ export default function UserPage() {
       setName(docSnap.data().name);
     }
   }
+
   const user = new UserViewManager();
+  // id = user.getID();
 
   return(
     <div>
-      <Button onClick={() => {user.signOut(); navigate(`/Home`)}}>Log out</Button>
-      <Container> {/* Nav bar with search, acct, cart*/}
-        <h1> this is the userpage of {name} </h1>
-        {/* <h1>hi</h1> */}
-      </Container>
-        
+      <Row>
+        <Col></Col>
+        <Col></Col>
+        <Col></Col>
+        <Col></Col>
+        <Col></Col>
+        <Col></Col>
+        <Col>
+          <Button variant="flat1" size="med" onClick={() => {user.signOut(); navigate(`/Home`)}}>Log out</Button>
+        </Col>
+      </Row>
+      
+      
+      <div style={{ backgroundImage: "url(/user_home_view.png)", backgroundPosition: '0px 0px', backgroundRepeat: "no-repeat", backgroundSize: 'cover', height: '100vh', width: '100vw' }}>
       <Container>
-        {/* products about to close */}
-      </Container>
-
-      <Container> 
-        {/* discover products type --> see all */}
-
-      </Container>
-
-      <Container>
-        {/* shop by business */}
-      </Container>
+                    <><style type="text/css"> {`
+                    
+                    .btn-flat1 {
+                      background-color: #25a47f;
+                      color: white;
+                      font-family: 'Josefin Sans'
+                    }
+                    .btn-med {
+                      padding: 1rem 1.5rem;
+                      font-size: 1rem;
+                      border-radius: "1000px"
+                    }
+                    .btn-flat {
+                        background-color: transparent;
+                        color: transparent;
+                        
+                        font-family: 'Josefin Sans'
+                        hover: none;
+                        height: 260px;
+                        opacity: 0;
+                    }
+                    .btn-medium {
+                        padding: 1rem 1.5rem;
+                        font-size: 1rem;
+                        // border-radius: "1000px"
+                        height: 1000px;
+                        width: 230px;
+                    }
+                    
+                    `}
+                    </style>
+                        <Row><span style={{ color: 'transparent' }}>b</span></Row>
+                        <Row><span style={{ color: 'transparent' }}>b</span></Row>
+                        <Row><span style={{ color: 'transparent' }}>b</span></Row>
+                        <Row>
+                            <Col>
+                                <div>
+                                    <Button onClick={() => navigate('/BusinessPage')} variant="flat" size="medium">
+                                        <strong>SHOP NOW</strong>
+                                    </Button>
+                                </div>
+                            </Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                            <Col></Col>
+                        </Row>
+                    </>
+                </Container>
+      </div>
     </div>
   );
 }

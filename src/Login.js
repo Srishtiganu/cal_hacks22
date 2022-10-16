@@ -1,4 +1,4 @@
-import React, {component} from 'react'
+import React, {component, useEffect} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import {Container, Row, Col, Button, Form} from 'react-bootstrap';
@@ -11,6 +11,7 @@ export default function Login() {
   //ensure signed out if in the login page. 
   
   
+
   const [isShownUser, setIsShownUser] = useState(false);
   const [isShownSeller, setIsShownSeller] = useState(false);
 
@@ -45,7 +46,24 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const user = new UserViewManager();
+
+    var id = null;
   
+    useEffect(() => {
+      if(id==null && user.getID()!=null) {
+        id = user.getID();
+        
+      }
+    })
+
+    const handleClick = () => {
+      user.signIn(email, password); 
+      if(id!=null) {
+        navigate(`/UserPage/${id}`);
+      }
+      
+    }
+
     return (
       <div>
         <Form>
@@ -59,13 +77,14 @@ export default function Login() {
              {/* onChange={(event) => setPassword(event.target.value)}  */}
             <Form.Control onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Session Password" />
           </Form.Group>
-          <Button onClick={() => {user.signIn(email, password); navigate(`./UserPage/${user.getID()}`);}}>Login</Button>
+          <Button onClick={handleClick}>Login</Button>
         </Form>
       </div>
     )
   }
   
   function SellerLogIn() {
+    let navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const user = new UserViewManager();
@@ -83,7 +102,7 @@ export default function Login() {
              {/* onChange={(event) => setPassword(event.target.value)}  */}
             <Form.Control onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Session Password" />
           </Form.Group>
-          <Button onClick={() => user.signIn(email, password)}>Login</Button>
+          <Button onClick={() => {user.signIn(email, password); navigate("./SellerPage");}}>Login</Button>
         </Form>
       </div>
     )
