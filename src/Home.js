@@ -3,9 +3,11 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap'
 import { useState } from 'react';
-
+import Login from './Login'
+import {useNavigate, useParams} from "react-router-dom";
 
 function Home() {
+    let navigate = useNavigate();
     const [isShownUser, setIsShownUser] = useState(false);
     const [isShownSeller, setIsShownSeller] = useState(false);
 
@@ -61,7 +63,7 @@ function Home() {
                         <Row>
                             <Col>
                                 <div>
-                                    <Button variant="flat" size="medium">
+                                    <Button onClick={() => navigate('/Login')} variant="flat" size="medium">
                                         <strong>SHOP NOW</strong>
                                     </Button>
                                 </div>

@@ -26,9 +26,31 @@ export default function Login() {
   return (
     <div> 
       <Container>
+        <><style type="text/css"> {`
+                    .btn-flat {
+                        background-color: #25a47f;
+                        color: white;
+                        font-family: 'Josefin Sans'
+                    }
+                    .btn-medium {
+                        padding: 1rem 1.5rem;
+                        font-size: 1rem;
+                        border-radius: "1000px"
+                    }
+                    `}
+                    </style></>
         <Row>
-          <Button onClick={showUserLogin}>User Portal</Button> 
-          <Button onClick={showSellerLogin}>Seller Portal</Button>
+          <Col>
+            <Button variant="flat" size="medium" onClick={showUserLogin}>User Portal</Button> 
+          </Col>
+          <Col>
+            <Button variant="flat" size="medium" onClick={showSellerLogin}>Seller Portal</Button>
+          </Col>
+          <Col></Col>
+          <Col></Col>
+          <Col></Col>
+          <Col></Col>
+          <Col></Col>
         </Row>
       </Container>
       <Container>
@@ -77,7 +99,7 @@ export default function Login() {
              {/* onChange={(event) => setPassword(event.target.value)}  */}
             <Form.Control onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Session Password" />
           </Form.Group>
-          <Button onClick={handleClick}>Login</Button>
+          <Button variant="flat" size="medium" onClick={handleClick}>Login</Button>
         </Form>
       </div>
     )
@@ -102,7 +124,7 @@ export default function Login() {
              {/* onChange={(event) => setPassword(event.target.value)}  */}
             <Form.Control onChange={(event) => setPassword(event.target.value)} type="password" placeholder="Session Password" />
           </Form.Group>
-          <Button onClick={() => {user.signIn(email, password); navigate("./SellerPage");}}>Login</Button>
+          <Button variant="flat" size="medium" onClick={() => {user.signIn(email, password); navigate("./SellerPage");}}>Login</Button>
         </Form>
       </div>
     )
